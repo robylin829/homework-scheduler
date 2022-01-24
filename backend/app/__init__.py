@@ -8,7 +8,7 @@ from app.configs import config
 db = SQLAlchemy()
 migrate = Migrate()
 ma = Marshmallow()
-admin = Admin(name="Admin", template_mode="bootstrap4")
+admin = Admin(name='Admin', template_mode='bootstrap4')
 
 def create_app():
     app = Flask(__name__)
@@ -27,6 +27,6 @@ def create_app():
 
     # Api blueprint
     from .apis import blueprint as api
-    app.register_blueprint(api, url_prefix="/api/v1")
+    app.register_blueprint(api, url_prefix='/api/v1')
     
     return app

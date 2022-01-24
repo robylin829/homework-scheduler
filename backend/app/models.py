@@ -1,4 +1,3 @@
-from sqlalchemy import null
 from app import db
 
 # Schedule - course - teacher
