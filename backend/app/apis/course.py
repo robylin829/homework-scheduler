@@ -1,11 +1,11 @@
-from flask_restx import Resource, Namespace, fields
+from app import db
 from app.models import Courses
 from app.schemas.course_shcema import * 
-from app import db
+from flask_restx import Resource, Namespace, fields
 
 api = Namespace(
-    'course',
-    discription="Add Course"
+    'Course',
+    discription="Course API"
 )
 
 get_course_data = api.model('Model', {
@@ -41,19 +41,27 @@ class CourseAPI(Resource):
 
     def get(self, id):
         course = self.getCourses(id)
+        if course == None:
+            return {'message': 'Find nothing'}
         course_ouput = course_schema.dump(course)
         return course_ouput
 
     def delete(self, id):
         course = self.getCourses(id)
+        if course == None:
+            return {'message': 'Find nothing'}
         db.session.delete(course)
         db.session.commit()
-        return {"message": "Delete Success"}
+        return {'message': 'Deleted Success'}
 
     @api.expect(get_course_data)
     def put(self, id):
         data = api.payload
         course = self.getCourses(id)
-        course.course_name = data['course_name']
-        db.session.add(course)
-        db.session.commit()
+        try:    
+            course.course_name = data['course_name']
+            db.session.add(course)
+            db.session.commit()
+        except:
+            return {'message': 'Modified failure'}
+        return {'message': 'Modified success'}
