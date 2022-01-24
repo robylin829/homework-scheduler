@@ -2,10 +2,12 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_admin import Admin
+from flask_marshmallow import Marshmallow
 from app.configs import config
 
 db = SQLAlchemy()
 migrate = Migrate()
+ma = Marshmallow()
 admin = Admin(name="Admin", template_mode="bootstrap4")
 
 def create_app():
@@ -13,6 +15,7 @@ def create_app():
     app.config.from_object(config.Config)
     db.init_app(app)
     migrate.init_app(app, db)
+    ma.init_app(app)
     admin.init_app(app)
 
     # Flask-Admin setting

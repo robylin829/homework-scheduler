@@ -1,3 +1,4 @@
+from sqlalchemy import null
 from app import db
 
 # Schedule - course - teacher
@@ -6,7 +7,8 @@ from app import db
 class Schedules(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     # When is the course
-    day = db.Column(db.String(10), nullable=False)
+    day = db.Column(db.String(20), nullable=False)
+    lesson = db.Column(db.String(20), nullable=False)
     courses = db.relationship('Courses', backref='schedules')
 
 # Teachers

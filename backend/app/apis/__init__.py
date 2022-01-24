@@ -1,6 +1,7 @@
 from flask import Blueprint
 from flask_restx import Api
-from .test_api import test as ns1
+# from .test_api import test as ns
+from .course import api as ns1
 
 blueprint = Blueprint('api', __name__)
 
@@ -12,4 +13,5 @@ api = Api(
 )
 
 # Api factory
-api.add_namespace(ns1, path="/test")
+# api.add_namespace(ns, path="/test")
+api.add_namespace(ns1, path='/course')

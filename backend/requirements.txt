@@ -15,6 +15,7 @@ jsonschema==4.4.0
 Mako==1.1.6
 MarkupSafe==2.0.1
 marshmallow==3.14.1
+marshmallow-sqlalchemy==0.27.0
 pyrsistent==0.18.1
 pytz==2021.3
 six==1.16.0
