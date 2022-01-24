@@ -3,16 +3,16 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_admin import Admin
 from flask_marshmallow import Marshmallow
-from app.configs import config
+from config import configs
 
 db = SQLAlchemy()
 migrate = Migrate()
 ma = Marshmallow()
 admin = Admin(name='Admin', template_mode='bootstrap4')
 
-def create_app():
+def create_app(env):
     app = Flask(__name__)
-    app.config.from_object(config.Config)
+    app.config.from_object(configs[env])
     db.init_app(app)
     migrate.init_app(app, db)
     ma.init_app(app)
