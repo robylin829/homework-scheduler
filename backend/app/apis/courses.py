@@ -46,14 +46,6 @@ class CourseAPI(Resource):
         course_ouput = course_schema.dump(course)
         return course_ouput
 
-    def delete(self, id):
-        course = self.getCourses(id)
-        if course == None:
-            return {'message': 'Find nothing'}
-        db.session.delete(course)
-        db.session.commit()
-        return {'message': 'Deleted Success'}
-
     @api.expect(get_course_data)
     def put(self, id):
         data = api.payload
@@ -65,3 +57,11 @@ class CourseAPI(Resource):
         except:
             return {'message': 'Modified failure'}
         return {'message': 'Modified success'}
+
+    def delete(self, id):
+        course = self.getCourses(id)
+        if course == None:
+            return {'message': 'Find nothing'}
+        db.session.delete(course)
+        db.session.commit()
+        return {'message': 'Deleted success'}

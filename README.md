@@ -4,7 +4,7 @@
 - Flask-RESTX
 - Flask-SQLAlchemy
 - Flask-Migrate
-- Flask-Admin1
+- Flask-Admin
 
 ### 資料庫
 - 班級欄位 
