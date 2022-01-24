@@ -1,9 +1,9 @@
 from flask import Blueprint
 from flask_restx import Api
-# from .test_api import test as ns
-from .course import api as ns1
-from .teacher import api as ns2
-from .schedule import api as ns3
+from .courses import api as ns1
+from .teachers import api as ns2
+from .schedules import api as ns3
+from .classes import api as ns4
 
 blueprint = Blueprint('api', __name__)
 
@@ -15,7 +15,7 @@ api = Api(
 )
 
 # Api factory
-# api.add_namespace(ns, path="/test")
 api.add_namespace(ns1, path='/course')
 api.add_namespace(ns2, path='/teacher')
 api.add_namespace(ns3, path='/schedule')
+api.add_namespace(ns4, path='/class')

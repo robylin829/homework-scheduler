@@ -64,4 +64,4 @@ class CourseAPI(Resource):
             return {'message': 'Find nothing'}
         db.session.delete(course)
         db.session.commit()
-        return {'message': 'Deleted Success'}
+        return {'message': 'Deleted success'}
