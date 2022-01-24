@@ -1,10 +1,14 @@
 import requests
+import time 
+import random
 from bs4 import BeautifulSoup
 from fake_useragent import UserAgent
 
+delay_coices = [8, 5, 10, 6, 20, 11]
 for i in range(4, 82):
     # Create a fake user agent
     user_agent = UserAgent()
+    delay = random.choice(delay_coices)
     cl = 0
     if i >= 10:
         cl = i
@@ -33,3 +37,4 @@ for i in range(4, 82):
     sel = soup.select("body form table")
 
     print(sel)
+    time.sleep(delay)
