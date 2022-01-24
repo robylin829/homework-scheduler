@@ -1,4 +1,3 @@
-from msilib.schema import Class
 from app import db
 from app.models import Classes
 from app.schemas.class_schema import *
