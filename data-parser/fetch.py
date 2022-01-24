@@ -38,27 +38,5 @@ for i in range(4, 82):
 
     print(sel)
     time.sleep(delay)
-string =[sel]
-Alist = []
-Blist = []
 
-string = string.split('<td class="tdColumn">')
-for i in range(6):
-    string.pop(i)
-string = string.split('<td class="tdColumn">')
-for i in range(1, 69, 2):
-    string.pop(i)
-for i in range(35):
-    tin = string[i]
-    tin = tin.split("(</span>)")
-    for i in range(2):
-        tina = tin[i]
-        tina = tina.split(">")
-        tinal = tina[2]
-        tinal = tinal[:4]
-        Alist.append(tinal)
-    for i in range(2):
-        tina = tin[i]
-        tina = tina.split(">")
-        tinal = tina[2]
- 
+
