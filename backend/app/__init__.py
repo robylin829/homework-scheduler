@@ -20,10 +20,11 @@ def create_app():
 
     # Flask-Admin setting
     from flask_admin.contrib.sqla import ModelView
-    from app.models import Schedules, Courses, Teachers
+    from app.models import Schedules, Courses, Teachers, Classes
     admin.add_view(ModelView(Schedules, db.session))
     admin.add_view(ModelView(Courses, db.session))
     admin.add_view(ModelView(Teachers, db.session))
+    admin.add_view(ModelView(Classes, db.session))
 
     # Api blueprint
     from .apis import blueprint as api
