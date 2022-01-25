@@ -13,3 +13,4 @@ while class_name<1582:
     class_name+=1
     class_html[data]=int(class_name)
 print(class_html)
+##能抓html，但無法連線
