@@ -3,6 +3,7 @@ from secrets import token_urlsafe
 class Config:
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SECRET_KEY = token_urlsafe(30)
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///test.db'
 
 class DevConfig(Config):
     SQLALCHEMY_DATABASE_URI = 'sqlite:///test.db'
