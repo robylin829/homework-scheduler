@@ -1,18 +1,25 @@
 <template>
-  <div>
-    <Home/> 
-    <router-view></router-view>
+  <div class="w-full bg-slate">
+    <div class="h-screen max-w-md mx-auto shadow-md overflow-hidden md:max-w-2xl">
+      <Logo/>
+      <Slide/>
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 
 <script>
-import Home from "./views/Home.vue"
+import Logo from "./components/Logo.vue"
+import Slide from "./components/Slide.vue"
 
 export default {
   setup(){
     return {
-      Home,
     }
+  },
+  components: {
+    Slide,
+    Logo
   }
 }
 </script>
