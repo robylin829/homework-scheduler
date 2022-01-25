@@ -2,7 +2,6 @@
   <div class="w-full bg-slate">
     <div class="h-screen max-w-md mx-auto shadow-md overflow-hidden md:max-w-2xl">
       <Logo/>
-      <Slide/>
       <router-view></router-view>
     </div>
   </div>
@@ -10,7 +9,6 @@
 
 <script>
 import Logo from "./components/Logo.vue"
-import Slide from "./components/Slide.vue"
 
 export default {
   setup(){
@@ -18,7 +16,6 @@ export default {
     }
   },
   components: {
-    Slide,
     Logo
   }
 }

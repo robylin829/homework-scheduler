@@ -1,7 +1,6 @@
 <template>
-  <div class="md:flex">
-    <div class="h-screen bg-white">
-    </div>
+  <div class="col-span-1">
+    fdsfds
   </div>
 </template>
 
