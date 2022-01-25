@@ -3,7 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_admin import Admin
 from flask_marshmallow import Marshmallow
-from config import configs
+from config import Config
 
 db = SQLAlchemy()
 migrate = Migrate()
@@ -12,7 +12,7 @@ admin = Admin(name='Admin', template_mode='bootstrap4')
 
 def create_app(env):
     app = Flask(__name__)
-    app.config.from_object(configs[env])
+    app.config.from_object(Config)
     db.init_app(app)
     migrate.init_app(app, db)
     ma.init_app(app)
