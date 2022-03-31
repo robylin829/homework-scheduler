@@ -20,6 +20,9 @@ def create_app(env):
     ma.init_app(app)
     admin.init_app(app)
     CORS(app)
+    
+    with app.app_context():
+        db.create_all()
 
     # Flask-Admin setting
     from flask_admin.contrib.sqla import ModelView
