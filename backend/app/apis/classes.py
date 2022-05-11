@@ -19,7 +19,7 @@ create_classes_data = api.model('Model', {
     'schedules': fields.String()
 })
 
-@api.route('')
+@api.route('/')
 class ClassesAPI(Resource):
     @api.marshal_with(get_classes_data)
     def get(self):
@@ -62,7 +62,7 @@ class ClassAPI(Resource):
             return {'message': 'Modified failure'}
         return {'message': 'Modified success'}
     
-    def delete(self, id):
+    def delete(self, id): 
         classes = self.getClass(id)
         if classes == None:
             return {'message': 'Find nothing'}

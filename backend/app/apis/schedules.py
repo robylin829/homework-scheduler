@@ -55,7 +55,7 @@ class ScheduleAPI(Resource):
     @api.marshal_with(get_schedules_data)
     def get(self, id):
         schedule = self.getSchedule(id)
-        schedule_output = schedule_schema(schedule)
+        schedule_output = schedule_schema.dump(schedule)
         return schedule_output
     
     @api.expect(create_schedules_data)

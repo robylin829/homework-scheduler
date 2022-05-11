@@ -1,4 +1,4 @@
-# Homework Scheduler
+# New HSNU Classtable
 ## 後端
 - Flask
 - Flask-RESTX

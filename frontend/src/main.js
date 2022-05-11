@@ -1,7 +1,13 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
-import "@/assets/styles/main.css";
+import "@/assets/styles/main.css"
 import "tailwindcss/tailwind.css"
+import VueAxios from "vue-axios"
+import axios from "axios"
 
-createApp(App).use(router).mount('#app')
+const app = createApp(App)
+app.use(VueAxios, axios)
+app.provide('axios', app.config.globalProperties.axios)
+app.use(router)
+app.mount('#app')

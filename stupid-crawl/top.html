@@ -1,0 +1,1715 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible"/>
+  <meta content="zh-tw" http-equiv="Content-Language"/>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+  <meta content="ShinHer Information Co.,Ltd." name="author"/>
+  <meta content="欣河資訊,課表查詢" name="keywords"/>
+  <meta content="課表查詢系統" name="description"/>
+  <meta content="Copyright © 1988-2017 ShinHer Information Co.,Ltd. All rights reserved." name="copyright"/>
+  <link href="/classtable/images/icon/favicon.ico" id="lnkShortcutIcon" media="all" rel="Shortcut Icon" type="image/x-icon"/>
+  <meta content="no-cache" name="Pragma"/>
+  <meta content="no-cache" http-equiv="Pragma"/>
+  <meta content="no-cache, no-store, must-revalidate" name="Cache-Control"/>
+  <meta content="post-check=0, pre-check=0" name="Cache-Control"/>
+  <meta content="no-cache" name="Cache-Control"/>
+  <meta content="-1" http-equiv="Expires"/>
+  <title>
+   課表查詢系統
+  </title>
+  <style type="text/css">
+   body {
+            margin: 5px;
+            background: url('images/ClassTable_Title_bg.gif') repeat-x #ccccff;
+        }
+
+        table {
+            font-size: 15px;
+        }
+
+        select {
+            font-family: "AR MingtiM BIG-5";
+            color: #000000;
+            float: none;
+        }
+
+        img {
+            cursor: pointer;
+        }
+
+        table#title {
+            /*width:100%;*/
+        }
+
+            table#title td#logo {
+                text-align: center;
+                width: 450px;
+            }
+
+                table#title td#logo span.version {
+                    color: darkblue;
+                    font-weight: bold;
+                    font-size: 12px;
+                }
+
+                table#title td#logo span.filedate {
+                    color: #404040;
+                    font-size: 12px;
+                }
+
+            table#title td#loginInfo {
+                padding-left: 10px;
+                padding-right: 10px;
+                color: black;
+                font-size: 15px;
+                vertical-align: bottom;
+            }
+
+            table#title td#controlbox {
+                margin: 0px;
+                padding: 0px;
+                width: 135px;
+            }
+
+                table#title td#controlbox input.button {
+                    font-size: 11px;
+                    font-family: Verdana;
+                    border: ridge 1px #64ADDD;
+                    color: #802000;
+                    background: #ffc080;
+                    text-transform: uppercase;
+                    margin-left: 5px;
+                    width: 130px;
+                }
+
+        table.innerTable td {
+        }
+
+        .combo {
+            position: relative;
+            display: inline;
+            vertical-align: top;
+            border: inset 2px;
+            overflow: hidden;
+        }
+
+            .combo .textbox {
+                display: inline;
+                float: left;
+            }
+
+                .combo .textbox input {
+                    height: 15px;
+                    border: none;
+                }
+
+            .combo .button {
+                display: inline;
+            }
+
+                .combo .button input {
+                    font-size: 6px;
+                    width: 16px;
+                    height: 15px;
+                    float: right;
+                    margin-top: 1px;
+                }
+
+            .combo .list {
+                display: block;
+            }
+  </style>
+  <link href="css/common.css?20170224164711" rel="stylesheet" type="text/css"/>
+  <script src="JS/common.js?20170224164711" type="text/javascript">
+  </script>
+  <script src="JS/struct.js?20170224164711" type="text/javascript">
+  </script>
+  <script src="JS/top.js?20170224164711" type="text/javascript">
+  </script>
+  <script src="JS/MicrosoftAjax.debug.js?20170224164711" type="text/javascript">
+  </script>
+  <script src="JS/ajax.js?20170224164711" type="text/javascript">
+  </script>
+  <script type="text/javascript">
+   <!--
+
+        function initResizeHandler() {
+            if (top != window) {
+                var tableTop = top.frames['tableTop'];
+                if (tableTop != null) {
+                    var fmTeacher = tableTop.frames['fmTeacher'];
+                    if (fmTeacher != null) {
+                        if (fmTeacher.contentWindow == null) {
+                            if (this == fmTeacher.window) return; // IE
+                        }
+                        else {
+                            if (this == fmTeacher.contentWindow) return; // Google Chrome
+                        }
+                    }
+                }
+            }
+            $addHandler(window, 'load', window_resize);
+            $addHandler(window, 'resize', window_resize);
+        }
+
+        initResizeHandler();
+    
+    //-->
+  </script>
+ </head>
+ <body ondragstart="return false;">
+  <form action="Top.asp" id="myForm" name="myForm">
+   <script type="text/javascript">
+    <!--
+function __doPostBack(eventTarget, eventArgument) {
+    if (typeof(beforePostBack) != 'undefined' && beforePostBack != null && beforePostBack.call != null) beforePostBack.call(this, {'sender' : this , 'cancel' : false});
+    $get('__EVENTTARGET').value = eventTarget;
+    $get('__EVENTARGUMENT').value = eventArgument;
+    document.forms[0].submit();
+}
+//-->
+   </script>
+   <input id="__EVENTTARGET" name="__EVENTTARGET" type="hidden"/>
+   <input id="__EVENTARGUMENT" name="__EVENTARGUMENT" type="hidden"/>
+   <input id="state" type="hidden" value="normal"/>
+   <table border="0" cellpadding="0" cellspacing="1" id="title">
+    <tr>
+     <td id="logo">
+      <img alt="課表查詢系統" height="22" src="images/classTable_title.gif"/>
+      <span class="version">
+       V2017
+      </span>
+      <span class="filedate">
+       [2017.02.24]
+      </span>
+     </td>
+     <td id="controlbox" style="display: none;">
+      <input class="button" id="btnCloseWin" onclick="btncloseWin_onclick();" type="button" value="關閉所有彈出視窗"/>
+     </td>
+     <td>
+     </td>
+    </tr>
+   </table>
+   <div style="display:none;visibility:hidden;">
+    <iframe frameborder="0" height="0" hidefocus="" id="fmTeacher" noresize="" scrolling="no" src="about:blank" unselectable="on" width="0">
+    </iframe>
+   </div>
+   <div style="text-align:center;">
+    <table border="0" cellpadding="0" cellspacing="0" style="width: 100%;">
+     <tr style="display: none;">
+      <td style="text-align: center; color: #0099ff;">
+       <img alt="" height="45" src="images/classTable_title.jpg" width="580"/>
+      </td>
+     </tr>
+     <tr>
+      <td>
+       <table align="center" border="0" cellpadding="0" cellspacing="0" style="line-height: 8px;">
+        <tr id="normal" style="display: block; height: 20px;">
+         <td style="font-size: 12px; text-align: left;">
+          <div id="PanelNormal">
+           <span id="psea">
+            <input checked="" id="r1" name="RadioGroup" type="radio" value="classNo">
+             <label for="r1">
+              請選擇班級
+             </label>
+             <select id="s1" name="s1" onchange="go();" onfocus="$get('r1').checked = true;" style="width: 120px; height: 20px;">
+              <option value="aaa">
+               請選擇班級
+              </option>
+              <option value="1556">
+               1556｜1556音樂
+              </option>
+              <option value="1557">
+               1557｜1557美術
+              </option>
+              <option value="1558">
+               1558｜1558語資
+              </option>
+              <option value="1559">
+               1559｜1559數資
+              </option>
+              <option value="1560">
+               1560｜1560數資
+              </option>
+              <option value="1561">
+               1561｜1561科學
+              </option>
+              <option value="1562">
+               1562｜1562資訊
+              </option>
+              <option value="1563">
+               1563｜1563
+              </option>
+              <option value="1564">
+               1564｜1564
+              </option>
+              <option value="1565">
+               1565｜1565
+              </option>
+              <option value="1566">
+               1566｜1566
+              </option>
+              <option value="1567">
+               1567｜1567
+              </option>
+              <option value="1568">
+               1568｜1568
+              </option>
+              <option value="1569">
+               1569｜1569
+              </option>
+              <option value="1570">
+               1570｜1570
+              </option>
+              <option value="1571">
+               1571｜1571
+              </option>
+              <option value="1572">
+               1572｜1572
+              </option>
+              <option value="1573">
+               1573｜1573
+              </option>
+              <option value="1574">
+               1574｜1574
+              </option>
+              <option value="1575">
+               1575｜1575
+              </option>
+              <option value="1576">
+               1576｜1576
+              </option>
+              <option value="1577">
+               1577｜1577
+              </option>
+              <option value="1578">
+               1578｜1578
+              </option>
+              <option value="1579">
+               1579｜1579
+              </option>
+              <option value="1580">
+               1580｜1580
+              </option>
+              <option value="1581">
+               1581｜1581
+              </option>
+              <option value="2530">
+               2530｜1530音樂
+              </option>
+              <option value="2531">
+               2531｜1531美術
+              </option>
+              <option value="2532">
+               2532｜1532語資
+              </option>
+              <option value="2533">
+               2533｜1533數資
+              </option>
+              <option value="2534">
+               2534｜1534數資
+              </option>
+              <option value="2535">
+               2535｜1535科學
+              </option>
+              <option value="2536">
+               2536｜1536資訊
+              </option>
+              <option value="2537">
+               2537｜1537(1)
+              </option>
+              <option value="2538">
+               2538｜1538(1)
+              </option>
+              <option value="2539">
+               2539｜1539(2)
+              </option>
+              <option value="2540">
+               2540｜1540(2)
+              </option>
+              <option value="2541">
+               2541｜1541(3)
+              </option>
+              <option value="2542">
+               2542｜1542(3)
+              </option>
+              <option value="2543">
+               2543｜1543(4)
+              </option>
+              <option value="2544">
+               2544｜1544(4)
+              </option>
+              <option value="2545">
+               2545｜1545(4)
+              </option>
+              <option value="2546">
+               2546｜1546(2)
+              </option>
+              <option value="2547">
+               2547｜1547(3)
+              </option>
+              <option value="2548">
+               2548｜1548(3)
+              </option>
+              <option value="2549">
+               2549｜1549(3)
+              </option>
+              <option value="2550">
+               2550｜1550(3)
+              </option>
+              <option value="2551">
+               2551｜1551(3)
+              </option>
+              <option value="2552">
+               2552｜1552(4)
+              </option>
+              <option value="2553">
+               2553｜1553(4)
+              </option>
+              <option value="2554">
+               2554｜1554(4)
+              </option>
+              <option value="2555">
+               2555｜1555(4)
+              </option>
+              <option value="3504">
+               3504｜1504音樂
+              </option>
+              <option value="3505">
+               3505｜1505美術
+              </option>
+              <option value="3506">
+               3506｜1506語資
+              </option>
+              <option value="3507">
+               3507｜1507數資
+              </option>
+              <option value="3508">
+               3508｜1508數資
+              </option>
+              <option value="3509">
+               3509｜1509科學
+              </option>
+              <option value="3510">
+               3510｜1510資訊
+              </option>
+              <option value="3511">
+               3511｜1511(1)
+              </option>
+              <option value="3512">
+               3512｜1512(2)
+              </option>
+              <option value="3513">
+               3513｜1513(2)
+              </option>
+              <option value="3514">
+               3514｜1514(3)
+              </option>
+              <option value="3515">
+               3515｜1515(3)
+              </option>
+              <option value="3516">
+               3516｜1516(4)
+              </option>
+              <option value="3517">
+               3517｜1517(4)
+              </option>
+              <option value="3518">
+               3518｜1518(4)
+              </option>
+              <option value="3519">
+               3519｜1519(1)
+              </option>
+              <option value="3520">
+               3520｜1520(2)
+              </option>
+              <option value="3521">
+               3521｜1521(2)
+              </option>
+              <option value="3522">
+               3522｜1522(3)
+              </option>
+              <option value="3523">
+               3523｜1523(3)
+              </option>
+              <option value="3524">
+               3524｜1524(3)
+              </option>
+              <option value="3525">
+               3525｜1525(3)
+              </option>
+              <option value="3526">
+               3526｜1526(3)
+              </option>
+              <option value="3527">
+               3527｜1527(4)
+              </option>
+              <option value="3528">
+               3528｜1528(4)
+              </option>
+              <option value="3529">
+               3529｜1529(4)
+              </option>
+              <option value="9994">
+               9994｜高三多元選修
+              </option>
+              <option value="9995">
+               9995｜高二彈性4
+              </option>
+              <option value="9996">
+               9996｜高二彈性3
+              </option>
+              <option value="9997">
+               9997｜高二彈性12
+              </option>
+              <option value="9998">
+               9998｜高一彈性
+              </option>
+              <option value="9999">
+               9999｜高一多元選修
+              </option>
+             </select>
+             <input id="rc1" name="RadioGroup" type="radio" value="courseNo"/>
+             <label for="rc1">
+              請選擇科目
+             </label>
+             <select id="sc1" name="sc1" onchange="go();" onfocus="$get('rc1').checked = true;" style="width: 120px; height: 20px; font-size: 11px;">
+              <option value="aaa">
+               請選擇科目
+              </option>
+              <option value="1000">
+               1000｜國文
+              </option>
+              <option value="1002">
+               1002｜國文英文專研
+              </option>
+              <option value="1003">
+               1003｜國文專研
+              </option>
+              <option value="1012">
+               1012｜深廣-國學常識
+              </option>
+              <option value="1015">
+               1015｜經典導讀
+              </option>
+              <option value="1016">
+               1016｜深廣-各類文學選讀
+              </option>
+              <option value="1017">
+               1017｜深廣-專題閱讀與研究
+              </option>
+              <option value="1018">
+               1018｜深廣-語文表達與傳播應用
+              </option>
+              <option value="1020">
+               1020｜高三多元-國文
+              </option>
+              <option value="2000">
+               2000｜英文
+              </option>
+              <option value="2002">
+               2002｜英文專研
+              </option>
+              <option value="2010">
+               2010｜溝通與表達
+              </option>
+              <option value="2012">
+               2012｜深廣-英文聽講
+              </option>
+              <option value="2013">
+               2013｜深廣-英文閱讀與寫作
+              </option>
+              <option value="2016">
+               2016｜高三多元-英文
+              </option>
+              <option value="2017">
+               2017｜議題意識專論
+              </option>
+              <option value="3000">
+               3000｜數學
+              </option>
+              <option value="3003">
+               3003｜數資專研
+              </option>
+              <option value="3005">
+               3005｜數學甲
+              </option>
+              <option value="3007">
+               3007｜數學統合
+              </option>
+              <option value="3013">
+               3013｜數學A
+              </option>
+              <option value="3014">
+               3014｜數學B
+              </option>
+              <option value="3015">
+               3015｜邏輯辯證
+              </option>
+              <option value="3016">
+               3016｜校訂數學
+              </option>
+              <option value="3019">
+               3019｜數甲數乙跑班
+              </option>
+              <option value="3020">
+               3020｜高三多元-數學
+              </option>
+              <option value="3021">
+               3021｜數學研修
+              </option>
+              <option value="4000">
+               4000｜探究與實作A
+              </option>
+              <option value="4012">
+               4012｜探究與實作B
+              </option>
+              <option value="4100">
+               4100｜物理
+              </option>
+              <option value="4107">
+               4107｜科學實驗概論(物)
+              </option>
+              <option value="4113">
+               4113｜科學書報討論(物)
+              </option>
+              <option value="4115">
+               4115｜校訂物理
+              </option>
+              <option value="4116">
+               4116｜深廣-力學二與熱學
+              </option>
+              <option value="4118">
+               4118｜深廣-電磁現象一
+              </option>
+              <option value="4119">
+               4119｜深廣-電磁現象二與量子現象
+              </option>
+              <option value="4120">
+               4120｜物理研修
+              </option>
+              <option value="4121">
+               4121｜高三多元-物理
+              </option>
+              <option value="4200">
+               4200｜化學
+              </option>
+              <option value="4207">
+               4207｜科學實驗概論(化)
+              </option>
+              <option value="4212">
+               4212｜科學書報討論(化)
+              </option>
+              <option value="4214">
+               4214｜校訂化學
+              </option>
+              <option value="4215">
+               4215｜深廣-物質構造與反應性
+              </option>
+              <option value="4217">
+               4217｜深廣-化學反應與平衡二
+              </option>
+              <option value="4218">
+               4218｜深廣-有機化學與應用科技
+              </option>
+              <option value="4219">
+               4219｜化學研修
+              </option>
+              <option value="4220">
+               4220｜高三多元-化學
+              </option>
+              <option value="4300">
+               4300｜生物
+              </option>
+              <option value="4311">
+               4311｜校訂生物
+              </option>
+              <option value="4312">
+               4312｜深廣-生命的起源與植物體的構造
+              </option>
+              <option value="4313">
+               4313｜深廣-動物體的構造與功能
+              </option>
+              <option value="4314">
+               4314｜深廣-生態、演化及生物多樣性
+              </option>
+              <option value="4315">
+               4315｜高三多元-生物
+              </option>
+              <option value="4316">
+               4316｜數資物(3)/生(4)
+              </option>
+              <option value="4317">
+               4317｜數資化(3)/生(4)
+              </option>
+              <option value="4400">
+               4400｜地球科學
+              </option>
+              <option value="4411">
+               4411｜地球系統思維
+              </option>
+              <option value="4412">
+               4412｜校訂地球科學
+              </option>
+              <option value="5100">
+               5100｜歷史
+              </option>
+              <option value="5104">
+               5104｜歷史探究與實作
+              </option>
+              <option value="5105">
+               5105｜校訂時空脈絡
+              </option>
+              <option value="5107">
+               5107｜深廣-族群、性別與國家的歷史
+              </option>
+              <option value="5108">
+               5108｜深廣-科技、環境與藝術的歷史
+              </option>
+              <option value="5200">
+               5200｜地理
+              </option>
+              <option value="5206">
+               5206｜地理探究與實作
+              </option>
+              <option value="5207">
+               5207｜校訂人與環境
+              </option>
+              <option value="5209">
+               5209｜深廣-空間資訊科技
+              </option>
+              <option value="5300">
+               5300｜公民
+              </option>
+              <option value="5306">
+               5306｜公民探究與實作
+              </option>
+              <option value="5307">
+               5307｜校訂公民研修
+              </option>
+              <option value="5310">
+               5310｜深廣-民主政治與法律
+              </option>
+              <option value="6100">
+               6100｜資訊
+              </option>
+              <option value="6101">
+               6101｜生活科技
+              </option>
+              <option value="6109">
+               6109｜競技程式設計
+              </option>
+              <option value="6110">
+               6110｜深廣-進階程式設計
+              </option>
+              <option value="6111">
+               6111｜深廣-工程設計專題
+              </option>
+              <option value="6113">
+               6113｜深廣-科技應用專題
+              </option>
+              <option value="6114">
+               6114｜拼圖式手機APP程式設計
+              </option>
+              <option value="6200">
+               6200｜音樂
+              </option>
+              <option value="6201">
+               6201｜世界音樂
+              </option>
+              <option value="6202">
+               6202｜合唱
+              </option>
+              <option value="6204">
+               6204｜西樂合奏
+              </option>
+              <option value="6206">
+               6206｜和聲學
+              </option>
+              <option value="6207">
+               6207｜音樂欣賞
+              </option>
+              <option value="6210">
+               6210｜樂曲分析及應用
+              </option>
+              <option value="6215">
+               6215｜音樂班藝術專題
+              </option>
+              <option value="6217">
+               6217｜國樂
+              </option>
+              <option value="6218">
+               6218｜專長研修
+              </option>
+              <option value="6219">
+               6219｜主副修
+              </option>
+              <option value="6221">
+               6221｜專題研究
+              </option>
+              <option value="6222">
+               6222｜電腦多媒體
+              </option>
+              <option value="6223">
+               6223｜即興創作
+              </option>
+              <option value="6224">
+               6224｜音樂跨領域實作
+              </option>
+              <option value="6225">
+               6225｜演出製作II
+              </option>
+              <option value="6226">
+               6226｜文創實務探究
+              </option>
+              <option value="6300">
+               6300｜美術
+              </option>
+              <option value="6302">
+               6302｜水墨
+              </option>
+              <option value="6306">
+               6306｜表演藝術
+              </option>
+              <option value="6308">
+               6308｜美術鑑賞
+              </option>
+              <option value="6311">
+               6311｜素描
+              </option>
+              <option value="6313">
+               6313｜彩繪技法
+              </option>
+              <option value="6314">
+               6314｜視唱聽寫
+              </option>
+              <option value="6320">
+               6320｜藝術生活
+              </option>
+              <option value="6326">
+               6326｜視覺設計
+              </option>
+              <option value="6327">
+               6327｜藝術生活(應用視覺)
+              </option>
+              <option value="6329">
+               6329｜創意表現
+              </option>
+              <option value="6330">
+               6330｜自主學習(美)
+              </option>
+              <option value="6331">
+               6331｜敘事空間與展覽構作
+              </option>
+              <option value="6335">
+               6335｜書法
+              </option>
+              <option value="6337">
+               6337｜資訊科技(設計實作)
+              </option>
+              <option value="6338">
+               6338｜家政
+              </option>
+              <option value="6339">
+               6339｜全民國防
+              </option>
+              <option value="6400">
+               6400｜體育
+              </option>
+              <option value="6500">
+               6500｜生命教育
+              </option>
+              <option value="6501">
+               6501｜生涯規畫
+              </option>
+              <option value="6600">
+               6600｜健康與護理
+              </option>
+              <option value="7000">
+               7000｜多元選修
+              </option>
+              <option value="7001">
+               7001｜高一彈性學習
+              </option>
+              <option value="7002">
+               7002｜高二彈性學習
+              </option>
+              <option value="7003">
+               7003｜校訂必修A
+              </option>
+              <option value="7004">
+               7004｜校訂必修B
+              </option>
+              <option value="7005">
+               7005｜科學班專題研究
+              </option>
+              <option value="7007">
+               7007｜基礎實驗技術(物)
+              </option>
+              <option value="7008">
+               7008｜基礎實驗技術(化)
+              </option>
+              <option value="7009">
+               7009｜基礎實驗技術(生)
+              </option>
+              <option value="7010">
+               7010｜資訊科學中的數學
+              </option>
+              <option value="7011">
+               7011｜情意發展
+              </option>
+              <option value="7012">
+               7012｜充實-數學
+              </option>
+              <option value="7013">
+               7013｜充實-物理
+              </option>
+              <option value="7014">
+               7014｜充實-化學
+              </option>
+              <option value="7015">
+               7015｜充實-生物
+              </option>
+              <option value="7016">
+               7016｜充實-國文
+              </option>
+              <option value="7019">
+               7019｜補強性-國語文
+              </option>
+              <option value="7020">
+               7020｜補強性-英語文
+              </option>
+              <option value="7025">
+               7025｜補強性-歷史
+              </option>
+              <option value="7026">
+               7026｜補強性-地理
+              </option>
+              <option value="7027">
+               7027｜補強性-公民
+              </option>
+              <option value="7028">
+               7028｜三班群高二跑班(生/資)
+              </option>
+              <option value="7029">
+               7029｜彈性學習
+              </option>
+              <option value="7030">
+               7030｜一班群高二跑班(多媒體/國文)
+              </option>
+              <option value="7031">
+               7031｜二班群高二跑班(資訊/英文)
+              </option>
+              <option value="7032">
+               7032｜個別科學研究
+              </option>
+              <option value="7035">
+               7035｜自主學習(數)
+              </option>
+              <option value="7036">
+               7036｜資訊專題研究
+              </option>
+              <option value="7039">
+               7039｜充實-英文(外)
+              </option>
+              <option value="7043">
+               7043｜充實-歷史
+              </option>
+              <option value="7044">
+               7044｜充實-地理
+              </option>
+              <option value="7045">
+               7045｜充實-公民
+              </option>
+              <option value="7444">
+               7444｜班級活動
+              </option>
+              <option value="7555">
+               7555｜社團活動
+              </option>
+              <option value="7777">
+               7777｜自習
+              </option>
+              <option value="8001">
+               8001｜國文(輔)
+              </option>
+              <option value="8003">
+               8003｜英文(輔)
+              </option>
+              <option value="8004">
+               8004｜數學(輔)
+              </option>
+              <option value="8007">
+               8007｜物理(輔)
+              </option>
+              <option value="8008">
+               8008｜化學(輔)
+              </option>
+              <option value="8010">
+               8010｜生物(輔)
+              </option>
+              <option value="8015">
+               8015｜歷史(輔)
+              </option>
+              <option value="8025">
+               8025｜視唱聽寫(輔)
+              </option>
+              <option value="8028">
+               8028｜數位實作(輔)
+              </option>
+              <option value="8029">
+               8029｜物化(隔週輔)
+              </option>
+             </select>
+             <input id="r2" name="RadioGroup" type="radio" value="teacherno"/>
+             <label for="r2">
+              請選擇教師
+             </label>
+             <select id="s2" name="s2" onchange="go();" onfocus="$get('r2').checked = true;" onkeypress="select_search_by_charCode(this, event.keyCode);" style="width: 120px; height: 20px;">
+              <option value="aaa">
+               請選擇教師
+              </option>
+              <option value="0001">
+               0001｜呂采凌
+              </option>
+              <option value="0002">
+               0002｜李巧柔
+              </option>
+              <option value="0003">
+               0003｜陳德愷
+              </option>
+              <option value="0005">
+               0005｜邱昱瑄
+              </option>
+              <option value="0006">
+               0006｜麥賢偉
+              </option>
+              <option value="0007">
+               0007｜洪緗媛
+              </option>
+              <option value="0009">
+               0009｜吳又予
+              </option>
+              <option value="0010">
+               0010｜孔雱瑩
+              </option>
+              <option value="0011">
+               0011｜黃怡清
+              </option>
+              <option value="0012">
+               0012｜吳尚庭
+              </option>
+              <option value="0014">
+               0014｜李振豪
+              </option>
+              <option value="0021">
+               0021｜郝思文
+              </option>
+              <option value="0023">
+               0023｜鄭功翊
+              </option>
+              <option value="0028">
+               0028｜沈春梅
+              </option>
+              <option value="0029">
+               0029｜張采君
+              </option>
+              <option value="0031">
+               0031｜許昱萱
+              </option>
+              <option value="0032">
+               0032｜陳宜均
+              </option>
+              <option value="0035">
+               0035｜陳怡潔
+              </option>
+              <option value="0036">
+               0036｜徐佳音
+              </option>
+              <option value="0037">
+               0037｜連玉如
+              </option>
+              <option value="0038">
+               0038｜廖凡慧
+              </option>
+              <option value="0039">
+               0039｜羅偉銘
+              </option>
+              <option value="0040">
+               0040｜何仁偉
+              </option>
+              <option value="0041">
+               0041｜李其諺
+              </option>
+              <option value="0043">
+               0043｜陳海倫
+              </option>
+              <option value="0044">
+               0044｜林湧傑
+              </option>
+              <option value="0045">
+               0045｜陳政修
+              </option>
+              <option value="0046">
+               0046｜范姜如
+              </option>
+              <option value="0048">
+               0048｜Jonathan
+              </option>
+              <option value="0049">
+               0049｜游于萱
+              </option>
+              <option value="0050">
+               0050｜林翎臻
+              </option>
+              <option value="0200">
+               0200｜郭育廷
+              </option>
+              <option value="0201">
+               0201｜陳之婷
+              </option>
+              <option value="0202">
+               0202｜陳念瑩
+              </option>
+              <option value="0203">
+               0203｜陳彥旭
+              </option>
+              <option value="0204">
+               0204｜林文苑
+              </option>
+              <option value="0205">
+               0205｜劉易欣
+              </option>
+              <option value="0206">
+               0206｜白顏慈
+              </option>
+              <option value="0209">
+               0209｜李立仁
+              </option>
+              <option value="0210">
+               0210｜顏妤庭
+              </option>
+              <option value="0211">
+               0211｜杜偉
+              </option>
+              <option value="0212">
+               0212｜黃文祥
+              </option>
+              <option value="0213">
+               0213｜馬曉瑛
+              </option>
+              <option value="0215">
+               0215｜周珂如
+              </option>
+              <option value="0220">
+               0220｜吳美珍
+              </option>
+              <option value="0224">
+               0224｜黃幸華
+              </option>
+              <option value="0225">
+               0225｜陳政廷
+              </option>
+              <option value="0227">
+               0227｜林思貝
+              </option>
+              <option value="0228">
+               0228｜蔡雨璇
+              </option>
+              <option value="0230">
+               0230｜于子緯
+              </option>
+              <option value="0231">
+               0231｜陳韋志
+              </option>
+              <option value="0236">
+               0236｜黃暐
+              </option>
+              <option value="0237">
+               0237｜許郁瑛
+              </option>
+              <option value="0238">
+               0238｜藍美米
+              </option>
+              <option value="0240">
+               0240｜梁貽芳
+              </option>
+              <option value="0241">
+               0241｜劉書妤
+              </option>
+              <option value="0242">
+               0242｜林彥希
+              </option>
+              <option value="0243">
+               0243｜林映辰
+              </option>
+              <option value="0244">
+               0244｜黃子馨
+              </option>
+              <option value="0245">
+               0245｜魏于軒
+              </option>
+              <option value="0246">
+               0246｜簡子嘉
+              </option>
+              <option value="0247">
+               0247｜范立平
+              </option>
+              <option value="1001">
+               1001｜洪怡珍
+              </option>
+              <option value="1002">
+               1002｜楊佩螢
+              </option>
+              <option value="1003">
+               1003｜黃麗禎
+              </option>
+              <option value="1004">
+               1004｜張蕙雯
+              </option>
+              <option value="1005">
+               1005｜江翊君
+              </option>
+              <option value="1006">
+               1006｜吳承和
+              </option>
+              <option value="1007">
+               1007｜張翠雲
+              </option>
+              <option value="1009">
+               1009｜劉為博
+              </option>
+              <option value="1010">
+               1010｜崔沁
+              </option>
+              <option value="1011">
+               1011｜吳明麟
+              </option>
+              <option value="1012">
+               1012｜陳芳儀
+              </option>
+              <option value="1013">
+               1013｜葉玟秀
+              </option>
+              <option value="1015">
+               1015｜魯秀華
+              </option>
+              <option value="1016">
+               1016｜柳之青
+              </option>
+              <option value="1017">
+               1017｜陳麗文
+              </option>
+              <option value="1018">
+               1018｜朱美卿
+              </option>
+              <option value="1019">
+               1019｜林淑鈴
+              </option>
+              <option value="1020">
+               1020｜楊可欣
+              </option>
+              <option value="1021">
+               1021｜林逸潔
+              </option>
+              <option value="1022">
+               1022｜黃雪嬌
+              </option>
+              <option value="1023">
+               1023｜張銓芬
+              </option>
+              <option value="1024">
+               1024｜楊敬珩
+              </option>
+              <option value="1025">
+               1025｜劉靜儒
+              </option>
+              <option value="1026">
+               1026｜何孟芩
+              </option>
+              <option value="1027">
+               1027｜劉品辰
+              </option>
+              <option value="1028">
+               1028｜蔡佩均
+              </option>
+              <option value="1029">
+               1029｜曾明樺
+              </option>
+              <option value="1101">
+               1101｜黃翎華
+              </option>
+              <option value="1102">
+               1102｜胡紫寧
+              </option>
+              <option value="1103">
+               1103｜劉又菁
+              </option>
+              <option value="1105">
+               1105｜廖子瑩
+              </option>
+              <option value="1106">
+               1106｜葉惠珠
+              </option>
+              <option value="1108">
+               1108｜余佳玟
+              </option>
+              <option value="1109">
+               1109｜許涵紋
+              </option>
+              <option value="1110">
+               1110｜林秀娟
+              </option>
+              <option value="1111">
+               1111｜林敏靜
+              </option>
+              <option value="1112">
+               1112｜謝瑋倫
+              </option>
+              <option value="1113">
+               1113｜李瑞玲
+              </option>
+              <option value="1114">
+               1114｜潘素貞
+              </option>
+              <option value="1115">
+               1115｜蔣漢揚
+              </option>
+              <option value="1117">
+               1117｜吳詩綺
+              </option>
+              <option value="1118">
+               1118｜賴香如
+              </option>
+              <option value="1119">
+               1119｜鄭雅玲
+              </option>
+              <option value="1120">
+               1120｜謝玉琪
+              </option>
+              <option value="1121">
+               1121｜吳依蓁
+              </option>
+              <option value="1122">
+               1122｜黃宗嫻
+              </option>
+              <option value="1123">
+               1123｜黃瑄
+              </option>
+              <option value="1124">
+               1124｜林義雄
+              </option>
+              <option value="1125">
+               1125｜趙又萱
+              </option>
+              <option value="1126">
+               1126｜郭青蘭
+              </option>
+              <option value="1200">
+               1200｜蕭煜修
+              </option>
+              <option value="1201">
+               1201｜王世豪
+              </option>
+              <option value="1202">
+               1202｜曾筱惠
+              </option>
+              <option value="1203">
+               1203｜殷灝
+              </option>
+              <option value="1204">
+               1204｜孟慶霖
+              </option>
+              <option value="1206">
+               1206｜李仁�Q
+              </option>
+              <option value="1207">
+               1207｜林宏宗
+              </option>
+              <option value="1208">
+               1208｜洪允東
+              </option>
+              <option value="1209">
+               1209｜彭良禎
+              </option>
+              <option value="1210">
+               1210｜賴易辰
+              </option>
+              <option value="1211">
+               1211｜陳鵬旭
+              </option>
+              <option value="1212">
+               1212｜陳材河
+              </option>
+              <option value="1213">
+               1213｜李雨純
+              </option>
+              <option value="1214">
+               1214｜盧裕鵬
+              </option>
+              <option value="1215">
+               1215｜林順德
+              </option>
+              <option value="1216">
+               1216｜莊建鐘
+              </option>
+              <option value="1217">
+               1217｜吳慧真
+              </option>
+              <option value="1218">
+               1218｜黃藝美
+              </option>
+              <option value="1219">
+               1219｜謝禮全
+              </option>
+              <option value="1220">
+               1220｜簡心怡
+              </option>
+              <option value="1221">
+               1221｜毛立甫
+              </option>
+              <option value="1222">
+               1222｜王啟光
+              </option>
+              <option value="1223">
+               1223｜蔡義誠
+              </option>
+              <option value="1224">
+               1224｜葉裕益
+              </option>
+              <option value="1225">
+               1225｜周洺朱
+              </option>
+              <option value="1226">
+               1226｜周佳瑩
+              </option>
+              <option value="1300">
+               1300｜潘冠錡
+              </option>
+              <option value="1301">
+               1301｜陳智勝
+              </option>
+              <option value="1302">
+               1302｜高銘宏
+              </option>
+              <option value="1303">
+               1303｜黃裕修
+              </option>
+              <option value="1304">
+               1304｜周柏遠
+              </option>
+              <option value="1306">
+               1306｜陸怡中
+              </option>
+              <option value="1307">
+               1307｜戴仁欽
+              </option>
+              <option value="1308">
+               1308｜徐丕勳
+              </option>
+              <option value="1309">
+               1309｜李柏翰
+              </option>
+              <option value="1310">
+               1310｜陳信孚
+              </option>
+              <option value="1311">
+               1311｜林家齊
+              </option>
+              <option value="1350">
+               1350｜吉佛慈
+              </option>
+              <option value="1351">
+               1351｜陳建廷
+              </option>
+              <option value="1352">
+               1352｜陳昭錦
+              </option>
+              <option value="1353">
+               1353｜江青釗
+              </option>
+              <option value="1354">
+               1354｜嚴建豐
+              </option>
+              <option value="1355">
+               1355｜張荊壢
+              </option>
+              <option value="1356">
+               1356｜吳孟修
+              </option>
+              <option value="1357">
+               1357｜廖靜宜
+              </option>
+              <option value="1358">
+               1358｜黃彬峰
+              </option>
+              <option value="1359">
+               1359｜曾英翔
+              </option>
+              <option value="1400">
+               1400｜羅尹廷
+              </option>
+              <option value="1401">
+               1401｜謝慧齡
+              </option>
+              <option value="1402">
+               1402｜蘇雨菁
+              </option>
+              <option value="1403">
+               1403｜林峻緯
+              </option>
+              <option value="1404">
+               1404｜張瑜紋
+              </option>
+              <option value="1405">
+               1405｜謝育慈
+              </option>
+              <option value="1406">
+               1406｜巫佳陽
+              </option>
+              <option value="1451">
+               1451｜王靖華
+              </option>
+              <option value="1500">
+               1500｜蘇信宇
+              </option>
+              <option value="1501">
+               1501｜郭錦慧
+              </option>
+              <option value="1502">
+               1502｜曾月吟
+              </option>
+              <option value="1503">
+               1503｜陳瑞玲
+              </option>
+              <option value="1504">
+               1504｜顏鈺亭
+              </option>
+              <option value="1505">
+               1505｜楊世鳳
+              </option>
+              <option value="1535">
+               1535｜洪挺晏
+              </option>
+              <option value="1536">
+               1536｜劉寶齡
+              </option>
+              <option value="1537">
+               1537｜魏欣儀
+              </option>
+              <option value="1538">
+               1538｜何榆
+              </option>
+              <option value="1539">
+               1539｜廖俊瑋
+              </option>
+              <option value="1540">
+               1540｜黃禮強
+              </option>
+              <option value="1570">
+               1570｜王稜鈞
+              </option>
+              <option value="1571">
+               1571｜梁雅雯
+              </option>
+              <option value="1572">
+               1572｜林貞君
+              </option>
+              <option value="1573">
+               1573｜蕭郁瑩
+              </option>
+              <option value="1574">
+               1574｜張錦裕
+              </option>
+              <option value="1575">
+               1575｜陳采妍
+              </option>
+              <option value="1576">
+               1576｜魏嘉美
+              </option>
+              <option value="1601">
+               1601｜陳和寬
+              </option>
+              <option value="1602">
+               1602｜林至勇
+              </option>
+              <option value="1603">
+               1603｜李啟龍
+              </option>
+              <option value="1604">
+               1604｜林俊卿
+              </option>
+              <option value="1605">
+               1605｜林麗玉
+              </option>
+              <option value="1635">
+               1635｜呂芳玲
+              </option>
+              <option value="1636">
+               1636｜孫涵薇
+              </option>
+              <option value="1637">
+               1637｜桑慧芬
+              </option>
+              <option value="1638">
+               1638｜張寶藝
+              </option>
+              <option value="1639">
+               1639｜黃淑美
+              </option>
+              <option value="1670">
+               1670｜范穎芳
+              </option>
+              <option value="1671">
+               1671｜張慈韡
+              </option>
+              <option value="1672">
+               1672｜陳慧芸
+              </option>
+              <option value="1673">
+               1673｜林慧萍
+              </option>
+              <option value="1674">
+               1674｜林岡弘
+              </option>
+              <option value="1675">
+               1675｜許君瑋
+              </option>
+              <option value="1700">
+               1700｜熊鴻鈞
+              </option>
+              <option value="1701">
+               1701｜蕭乃升
+              </option>
+              <option value="1702">
+               1702｜蔡宇玲
+              </option>
+              <option value="1703">
+               1703｜林俊城
+              </option>
+              <option value="1704">
+               1704｜黃國禎
+              </option>
+              <option value="1705">
+               1705｜李佳美
+              </option>
+              <option value="1706">
+               1706｜池欣玲
+              </option>
+              <option value="1707">
+               1707｜林正達
+              </option>
+              <option value="1708">
+               1708｜魯筠珍
+              </option>
+              <option value="1709">
+               1709｜柯冠銘
+              </option>
+              <option value="1710">
+               1710｜游陳富
+              </option>
+              <option value="1735">
+               1735｜黃惠貞
+              </option>
+              <option value="1800">
+               1800｜李慧賢
+              </option>
+              <option value="1801">
+               1801｜侯春如
+              </option>
+              <option value="1802">
+               1802｜林煜智
+              </option>
+              <option value="1804">
+               1804｜楊凱文
+              </option>
+              <option value="1805">
+               1805｜詹秀雯
+              </option>
+              <option value="1806">
+               1806｜廖紋舲
+              </option>
+             </select>
+             <input id="r3" name="RadioGroup" type="radio" value="roomNo"/>
+             <label for="r3">
+              請選擇教室
+             </label>
+             <select id="s3" name="Select3" onchange="go();" onfocus="$get('r3').checked=true" style="width: 120px; height: 20px;">
+              <option value="aaa">
+               請選擇教室
+              </option>
+              <option value="21">
+               21｜美術教室(二)
+              </option>
+              <option value="22">
+               22｜國畫教室
+              </option>
+              <option value="23">
+               23｜西畫教室
+              </option>
+              <option value="26">
+               26｜美術教室(三)
+              </option>
+              <option value="54">
+               54｜音樂場地
+              </option>
+              <option value="56">
+               56｜電腦場地
+              </option>
+             </select>
+             排列方式
+             <select id="selArrange1" style="width: 63pt; height: 20px;">
+              <option selected="" value="R">
+               由右至左
+              </option>
+              <option value="L">
+               由左至右
+              </option>
+             </select>
+             開啟模式
+             <select id="selWindow1" style="width: 75pt; height: 20px; font-size: 11px;">
+              <option selected="" value="Left">
+               開在左側窗格
+              </option>
+              <option value="Right">
+               開在右側窗格
+              </option>
+              <option value="NewWindow">
+               開在新視窗
+              </option>
+             </select>
+            </input>
+           </span>
+          </div>
+         </td>
+        </tr>
+       </table>
+      </td>
+     </tr>
+    </table>
+   </div>
+   <script type="text/javascript">
+    <!--
+            var userIP = '140.131.149.6', dbf = '1';
+
+            function init() {
+                try {
+                    if ($get('selArrange1') != null) $get('selArrange1').onchange = selArrange1_onchange;
+                    $get('selArrange2').onchange = selArrange2_onchange;
+                    $get('selWindow1').onchange = selWindow1_OnChange;
+                    $get('selWindow2').onchange = selWindow2_OnChange;
+                    $addHandler(top.window, 'unload', function () { try { btncloseWin_onclick(); } finally { } });
+                }
+                catch (e) {
+                }
+            }
+
+            setTimeout('init();', 100);
+            
+        //-->
+   </script>
+  </form>
+ </body>
+</html>
+<!-- 0.0469s at 2022/03/31 14:01:58 -->
